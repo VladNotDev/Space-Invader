@@ -238,7 +238,7 @@ while running:
             enemiesX[i] = 0
             directions[i] = True
 
-        if enemiesY[i] > 450:
+        if enemiesY[i] > 460:
             game_over()
             
 
@@ -246,14 +246,14 @@ while running:
     for i in range(num_of_enemies):
         has_collided = collided(enemiesX[i], enemiesY[i], bulletX, bulletY)
 
-        if has_collided == True:
+        if has_collided == True and in_motion == True:
             explosion_sound = sound.Sound(
                 os.path.join(soundfolder_path, "explosion.wav")
             )
             explosion_sound.play()
             score += 1
             in_motion = False
-            bulletY = plrY
+            bulletY = plrY 
 
             # reposition the enemy
             enemiesX[i] = random.randint(0, 800)
